@@ -148,7 +148,160 @@ const dataRuUpper = [
     { code: "ArrowRight", value: "►" }
   ]
 ];
+const dataEnLower = [
+  [
+    { code: "Backquote", value: "`" },
+    { code: "Digit1", value: "1" },
+    { code: "Digit2", value: "2" },
+    { code: "Digit3", value: "3" },
+    { code: "Digit4", value: "4" },
+    { code: "Digit5", value: "5" },
+    { code: "Digit6", value: "6" },
+    { code: "Digit7", value: "7" },
+    { code: "Digit8", value: "8" },
+    { code: "Digit9", value: "9" },
+    { code: "Digit0", value: "0" },
+    { code: "Minus", value: "-" },
+    { code: "Equal", value: "=" },
+    { code: "Backspace", value: "Backspace" }
+  ],
+  [
+    { code: "Tab", value: "Tab" },
+    { code: "KeyQ", value: "q" },
+    { code: "KeyW", value: "w" },
+    { code: "KeyE", value: "e" },
+    { code: "KeyR", value: "r" },
+    { code: "KeyT", value: "t" },
+    { code: "KeyY", value: "y" },
+    { code: "KeyU", value: "u" },
+    { code: "KeyI", value: "i" },
+    { code: "KeyO", value: "o" },
+    { code: "KeyP", value: "p" },
+    { code: "BracketLeft", value: "[" },
+    { code: "BracketRight", value: "]" },
+    { code: "Backslash", value: "/" }
+  ],
+  [
+    { code: "CapsLock", value: "Caps Lock" },
+    { code: "KeyA", value: "a" },
+    { code: "KeyS", value: "s" },
+    { code: "KeyD", value: "d" },
+    { code: "KeyF", value: "f" },
+    { code: "KeyG", value: "g" },
+    { code: "KeyH", value: "h" },
+    { code: "KeyJ", value: "j" },
+    { code: "KeyK", value: "k" },
+    { code: "KeyL", value: "l" },
+    { code: "Semicolon", value: ";" },
+    { code: "Quote", value: "'" },
+    { code: "Enter", value: "Enter" }
+  ],
+  [
+    { code: "ShiftLeft", value: "Shift" },
+    { code: "KeyZ", value: "z" },
+    { code: "KeyX", value: "x" },
+    { code: "KeyC", value: "c" },
+    { code: "KeyV", value: "v" },
+    { code: "KeyB", value: "b" },
+    { code: "KeyN", value: "n" },
+    { code: "KeyM", value: "m" },
+    { code: "Comma", value: "<" },
+    { code: "Period", value: ">" },
+    { code: "Slash", value: "?" },
+    { code: "ArrowUp", value: "▲" },
+    { code: "ShiftRight", value: "Shift" }
+  ],
+  [
+    { code: "ControlLeft", value: "Ctrl" },
+    { code: "lang", value: "EN" },
+    { code: "AltLeft", value: "Alt" },
+    { code: "Space", value: "Space" },
+    { code: "AltRight", value: "Alt" },
+    { code: "ControlRight", value: "Ctrl" },
+    { code: "ArrowLeft", value: "◄" },
+    { code: "ArrowDown", value: "▼" },
+    { code: "ArrowRight", value: "►" }
+  ]
+];
+const dataEnUpper = [
+  [
+    { code: "Backquote", value: "~" },
+    { code: "Digit1", value: "!" },
+    { code: "Digit2", value: "@" },
+    { code: "Digit3", value: "#" },
+    { code: "Digit4", value: "$" },
+    { code: "Digit5", value: "%" },
+    { code: "Digit6", value: "^" },
+    { code: "Digit7", value: "&" },
+    { code: "Digit8", value: "*" },
+    { code: "Digit9", value: "(" },
+    { code: "Digit0", value: ")" },
+    { code: "Minus", value: "_" },
+    { code: "Equal", value: "+" },
+    { code: "Backspace", value: "Backspace" }
+  ],
+  [
+    { code: "Tab", value: "Tab" },
+    { code: "KeyQ", value: "Q" },
+    { code: "KeyW", value: "W" },
+    { code: "KeyE", value: "E" },
+    { code: "KeyR", value: "R" },
+    { code: "KeyT", value: "T" },
+    { code: "KeyY", value: "Y" },
+    { code: "KeyU", value: "U" },
+    { code: "KeyI", value: "I" },
+    { code: "KeyO", value: "O" },
+    { code: "KeyP", value: "P" },
+    { code: "BracketLeft", value: "{" },
+    { code: "BracketRight", value: "}" },
+    { code: "Backslash", value: "|" }
+  ],
+  [
+    { code: "CapsLock", value: "Caps Lock" },
+    { code: "KeyA", value: "A" },
+    { code: "KeyS", value: "S" },
+    { code: "KeyD", value: "D" },
+    { code: "KeyF", value: "F" },
+    { code: "KeyG", value: "G" },
+    { code: "KeyH", value: "H" },
+    { code: "KeyJ", value: "J" },
+    { code: "KeyK", value: "K" },
+    { code: "KeyL", value: "L" },
+    { code: "Semicolon", value: ":" },
+    { code: "Quote", value: '"' },
+    { code: "Enter", value: "Enter" }
+  ],
+  [
+    { code: "ShiftLeft", value: "Shift" },
+    { code: "KeyZ", value: "Z" },
+    { code: "KeyX", value: "X" },
+    { code: "KeyC", value: "C" },
+    { code: "KeyV", value: "V" },
+    { code: "KeyB", value: "B" },
+    { code: "KeyN", value: "N" },
+    { code: "KeyM", value: "M" },
+    { code: "Comma", value: "," },
+    { code: "Period", value: "." },
+    { code: "Slash", value: "/" },
+    { code: "ArrowUp", value: "▲" },
+    { code: "ShiftRight", value: "Shift" }
+  ],
+  [
+    { code: "ControlLeft", value: "Ctrl" },
+    { code: "lang", value: "EN" },
+    { code: "AltLeft", value: "Alt" },
+    { code: "Space", value: "Space" },
+    { code: "AltRight", value: "Alt" },
+    { code: "ControlRight", value: "Ctrl" },
+    { code: "ArrowLeft", value: "◄" },
+    { code: "ArrowDown", value: "▼" },
+    { code: "ArrowRight", value: "►" }
+  ]
+];
+let language = "RU";
+let pressed = new Set();
 let data = dataRuLower;
+const langKey = ["ShiftLeft", "AltLeft"];
 document.body.onkeydown = handleDown;
 document.body.onkeyup = handleUp;
 
@@ -183,10 +336,19 @@ function renderKeyboard(arr) {
 }
 
 function handleDown(event) {
+  console.log(event.code)
   let button = document.querySelector(`[data-keyCode=${event.code}]`);
+  pressed.add(event.code);
   if (button && !event.repeat && event.code !== "CapsLock") {
     button.classList.add("active");
   }
+  for (let code of langKey) {
+    if (!pressed.has(code)) {
+      return;
+    }
+  }
+  changeLanguage();
+  pressed.clear();
 }
 
 function handleUp(event) {
@@ -194,4 +356,11 @@ function handleUp(event) {
   if (button && event.code !== "CapsLock") {
     button.classList.remove("active");
   }
+  pressed.delete(event.code);
+}
+function changeLanguage() {
+  language = language === "RU" ? "EN" : "RU";
+  data = language === "RU" ? dataRuLower : dataEnLower;
+  document.querySelector(".keyboard").remove();
+  renderKeyboard(data);
 }
