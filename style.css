@@ -26,6 +26,12 @@ body {
   height: 90%;
 }
 
+.inputarea {
+  margin-bottom: 20px;
+  width: 740px;
+  height: 100px;
+}
+
 .one_line {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -52,6 +58,18 @@ body {
   padding: 5px;
   border-radius: 5px;
   cursor: pointer;
+}
+
+.one_button[data-keycode^="Arrow"] {
+  background-color: #e3e3e3;
+}
+
+.one_button[data-keycode="lang"] {
+  background-color: #e3e3e3;
+}
+
+.one_button[data-keycode="lang"]:hover {
+  background-color: #e3e3e3;
 }
 
 .one_button:hover {
@@ -121,5 +139,9 @@ body {
 
 .one_button.space:hover {
   background-color: #c5c5c5;
+}
+
+.one_button.active {
+  background-color: gray;
 }
 /*# sourceMappingURL=style.css.map */

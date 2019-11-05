@@ -149,6 +149,8 @@ const dataRuUpper = [
   ]
 ];
 let data = dataRuLower;
+document.body.onkeydown = handleDown;
+document.body.onkeyup = handleUp;
 
 renderKeyboard(data);
 
@@ -178,4 +180,18 @@ function renderKeyboard(arr) {
     });
     keyboard.append(line);
   });
+}
+
+function handleDown(event) {
+  let button = document.querySelector(`[data-keyCode=${event.code}]`);
+  if (button && !event.repeat && event.code !== "CapsLock") {
+    button.classList.add("active");
+  }
+}
+
+function handleUp(event) {
+  let button = document.querySelector(`[data-keyCode=${event.code}]`);
+  if (button && event.code !== "CapsLock") {
+    button.classList.remove("active");
+  }
 }
