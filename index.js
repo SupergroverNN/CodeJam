@@ -1,3 +1,10 @@
+let language = "RU";
+let isCaps = false;
+let isShift = false;
+let pressed = new Set();
+let textValue = "";
+const langKey = ["ShiftLeft", "AltLeft"];
+
 const dataRuLower = [
   [
     { code: "Backquote", value: "ё" },
@@ -298,14 +305,18 @@ const dataEnUpper = [
     { code: "ArrowRight", value: "►" }
   ]
 ];
-let language = "RU";
-let pressed = new Set();
 let data = dataRuLower;
-const langKey = ["ShiftLeft", "AltLeft"];
+renderTextErea();
+renderKeyboard(data);
 document.body.onkeydown = handleDown;
 document.body.onkeyup = handleUp;
+document.body.onblur = handleBlur;
 
-renderKeyboard(data);
+function renderTextErea() {
+  let textarea = document.createElement("textarea");
+  textarea.className = "inputarea";
+  document.body.append(textarea);
+}
 
 function renderKeyboard(arr) {
   let keyboard = document.createElement("div");
@@ -336,9 +347,18 @@ function renderKeyboard(arr) {
 }
 
 function handleDown(event) {
-  console.log(event.code)
   let button = document.querySelector(`[data-keyCode=${event.code}]`);
   pressed.add(event.code);
+  if (button && event.code === "CapsLock") {
+    isCaps = !isCaps;
+    capsing();
+    isCaps ? button.classList.add("active") : button.classList.remove("active");
+  }
+  if (button && event.code.includes("Shift")) {
+    isShift = true;
+    capsing();
+    button.classList.add("active");
+  }
   if (button && !event.repeat && event.code !== "CapsLock") {
     button.classList.add("active");
   }
@@ -356,11 +376,81 @@ function handleUp(event) {
   if (button && event.code !== "CapsLock") {
     button.classList.remove("active");
   }
+  if (button && event.code.includes("Shift")) {
+    isShift = false;
+    capsing();
+    button.classList.remove("active");
+  }
+
   pressed.delete(event.code);
+  for (let code of langKey) {
+    if (!pressed.has(code)) {
+      return;
+    }
+  }
+  changeLanguage();
+  pressed.clear();
 }
+
+function handleBlur() {
+  let buttons = document.querySelectorAll(".one_button");
+  buttons.forEach(button => button.classList.remove("active"));
+}
+function capsing() {
+  document.querySelector(".keyboard").remove();
+  data =
+    isCaps || isShift
+      ? language === "RU"
+        ? dataRuUpper
+        : dataEnUpper
+      : language === "RU"
+      ? dataRuLower
+      : dataEnLower;
+  renderKeyboard(data);
+}
+
 function changeLanguage() {
   language = language === "RU" ? "EN" : "RU";
   data = language === "RU" ? dataRuLower : dataEnLower;
   document.querySelector(".keyboard").remove();
   renderKeyboard(data);
+}
+
+function handleClick(v) {
+  let textarea = document.querySelector("textarea");
+  if (v === "Backspace") {
+    let val = textarea.value;
+    textarea.value = val ? val.slice(0, val.length - 1) : val;
+  } else {
+    let value;
+    switch (v) {
+      case "Tab":
+        value = "\t";
+        break;
+      case "Space":
+        value = " ";
+        break;
+      case "RU":
+      case "EN":
+      case "Ctrl":
+      case "Alt":
+        return;
+      case "Enter":
+        value = "\n";
+        break;
+      case "Shift":
+        isShift = true;
+        setTimeout(() => (isCaps = false), 300);
+        return;
+      case "Caps Lock": {
+        let capslock = document.querySelector(".caps_lock");
+        isCaps = !isCaps;
+        isCaps ? capslock.classList.add("active") : capslock.classList.remove("active");
+        return;
+      }
+      default:
+        value = v;
+    }
+    textarea.value += value;
+  }
 }
