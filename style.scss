@@ -15,7 +15,7 @@ body {
 }
 .inputarea{
   margin-bottom: 20px;
-  width: 740px;
+  width: 760px;
   height: 100px;
 }
 .one_line {
@@ -23,6 +23,7 @@ body {
 }
 
 .one_button {
+  box-shadow:  2px 3px 15px 0px rgba(50, 50, 50, 0.62);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -32,10 +33,15 @@ body {
   font-size: 15px;
   border: 1px solid #c7d0d4;
   background: #fff;
-  margin: 1px;
+  margin: 2px;
   padding: 5px;
   border-radius: 5px;
   cursor: pointer;
+  &.animate{
+    transition: all 0.3s linear;
+    background-color: #fff;
+    box-shadow:  0px 1px 15px 0px rgba(50, 50, 50, 0.62) inset;
+  }
   &[data-keycode^="Arrow"]{
     background-color: #e3e3e3;
   }
@@ -87,19 +93,20 @@ body {
     width: 126px;
     background-color: #e3e3e3;
     &.active {
-      background-color: gray;
+      background-color: #fff;
     }
     &:hover {
       background-color: #c5c5c5;
     }
 	}	
 	&.space{
-    width: 330px;
+    width: 338px;
     &:hover {
       background-color: #c5c5c5;
     }
 	}
 	&.active {
-		background-color: gray;
+    background-color: #fff;
+    box-shadow:  0px 1px 15px 0px rgba(50, 50, 50, 0.62) inset;
 	}
 }

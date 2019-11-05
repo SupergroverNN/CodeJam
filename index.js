@@ -2,8 +2,7 @@ let language = "RU";
 let isCaps = false;
 let isShift = false;
 let pressed = new Set();
-let textValue = "";
-const langKey = ["ShiftLeft", "AltLeft"];
+const langKey = ["ShiftLeft", "ControlLeft"];
 
 const dataRuLower = [
   [
@@ -111,7 +110,7 @@ const dataRuUpper = [
     { code: "KeyP", value: "З" },
     { code: "BracketLeft", value: "Х" },
     { code: "BracketRight", value: "Ъ" },
-    { code: "Backslash", value: "\\" }
+    { code: "Backslash", value: "/" }
   ],
   [
     { code: "CapsLock", value: "Caps Lock" },
@@ -186,7 +185,7 @@ const dataEnLower = [
     { code: "KeyP", value: "p" },
     { code: "BracketLeft", value: "[" },
     { code: "BracketRight", value: "]" },
-    { code: "Backslash", value: "/" }
+    { code: "Backslash", value: "\\" }
   ],
   [
     { code: "CapsLock", value: "Caps Lock" },
@@ -212,9 +211,9 @@ const dataEnLower = [
     { code: "KeyB", value: "b" },
     { code: "KeyN", value: "n" },
     { code: "KeyM", value: "m" },
-    { code: "Comma", value: "<" },
-    { code: "Period", value: ">" },
-    { code: "Slash", value: "?" },
+    { code: "Comma", value: "," },
+    { code: "Period", value: "." },
+    { code: "Slash", value: "/" },
     { code: "ArrowUp", value: "▲" },
     { code: "ShiftRight", value: "Shift" }
   ],
@@ -287,9 +286,10 @@ const dataEnUpper = [
     { code: "KeyB", value: "B" },
     { code: "KeyN", value: "N" },
     { code: "KeyM", value: "M" },
-    { code: "Comma", value: "," },
-    { code: "Period", value: "." },
-    { code: "Slash", value: "/" },
+
+    { code: "Comma", value: "<" },
+    { code: "Period", value: ">" },
+    { code: "Slash", value: "?" },
     { code: "ArrowUp", value: "▲" },
     { code: "ShiftRight", value: "Shift" }
   ],
@@ -323,10 +323,8 @@ function renderKeyboard(arr) {
   keyboard.className = "keyboard";
   document.body.append(keyboard);
   arr.forEach(row => {
-    // добавление ряда кнопок
     let line = document.createElement("div");
     line.className = "one_line";
-    // добавление кнопки
     row.forEach(item => {
       let newButton = document.createElement("div");
       if (item.value.length > 1) {
@@ -339,7 +337,8 @@ function renderKeyboard(arr) {
       }
       newButton.innerHTML = `<p>${item.value}</p>`;
       newButton.setAttribute("data-keyCode", item.code);
-      newButton.onclick = () => handleClick(item.value);
+      newButton.onmousedown = () => handleMouseDown(item.value, item.code);
+      newButton.onmouseup = () => handleMouseUp(item.code);
       line.append(newButton);
     });
     keyboard.append(line);
@@ -349,17 +348,19 @@ function renderKeyboard(arr) {
 function handleDown(event) {
   let button = document.querySelector(`[data-keyCode=${event.code}]`);
   pressed.add(event.code);
-  if (button && event.code === "CapsLock") {
+  if (button && !event.repeat && event.code === "CapsLock") {
     isCaps = !isCaps;
     capsing();
+    let button = document.querySelector(`[data-keyCode=${event.code}]`);
     isCaps ? button.classList.add("active") : button.classList.remove("active");
   }
   if (button && event.code.includes("Shift")) {
     isShift = true;
     capsing();
+    let button = document.querySelector(`[data-keyCode=${event.code}]`);
     button.classList.add("active");
   }
-  if (button && !event.repeat && event.code !== "CapsLock") {
+  if (button  && event.code !== "CapsLock") {
     button.classList.add("active");
   }
   for (let code of langKey) {
@@ -368,7 +369,6 @@ function handleDown(event) {
     }
   }
   changeLanguage();
-  pressed.clear();
 }
 
 function handleUp(event) {
@@ -383,13 +383,6 @@ function handleUp(event) {
   }
 
   pressed.delete(event.code);
-  for (let code of langKey) {
-    if (!pressed.has(code)) {
-      return;
-    }
-  }
-  changeLanguage();
-  pressed.clear();
 }
 
 function handleBlur() {
@@ -398,14 +391,15 @@ function handleBlur() {
 }
 function capsing() {
   document.querySelector(".keyboard").remove();
-  data =
-    isCaps || isShift
-      ? language === "RU"
-        ? dataRuUpper
-        : dataEnUpper
-      : language === "RU"
-      ? dataRuLower
-      : dataEnLower;
+  if(isCaps || isShift){
+    data = language === "RU"
+    ? dataRuUpper
+    : dataEnUpper;
+  } else {
+    data = language === "RU"
+    ? dataRuLower
+    : dataEnLower;
+  }
   renderKeyboard(data);
 }
 
@@ -416,8 +410,19 @@ function changeLanguage() {
   renderKeyboard(data);
 }
 
-function handleClick(v) {
+function handleMouseUp(code) {
+  let button = document.querySelector(`[data-keyCode=${code}]`);
+  button.classList.remove('animate');
+  if(code.includes('Shift')){
+    isShift = false;
+     capsing()
+  }
+}
+function handleMouseDown(v, code) {
   let textarea = document.querySelector("textarea");
+  let button = document.querySelector(`[data-keyCode=${code}]`);
+  button.classList.add('animate');
+  // setTimeout(()=> button.classList.remove('animate'), 300);
   if (v === "Backspace") {
     let val = textarea.value;
     textarea.value = val ? val.slice(0, val.length - 1) : val;
@@ -440,11 +445,12 @@ function handleClick(v) {
         break;
       case "Shift":
         isShift = true;
-        setTimeout(() => (isCaps = false), 300);
+        capsing();
         return;
       case "Caps Lock": {
-        let capslock = document.querySelector(".caps_lock");
         isCaps = !isCaps;
+        capsing();
+        let capslock = document.querySelector(".caps_lock");
         isCaps ? capslock.classList.add("active") : capslock.classList.remove("active");
         return;
       }
