@@ -1,0 +1,168 @@
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+html {
+  height: 90%;
+}
+
+body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 90%;
+}
+
+.inputarea {
+  margin-bottom: 20px;
+  width: 760px;
+  height: 100px;
+}
+
+.one_line {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.one_button {
+  -webkit-box-shadow: 2px 3px 15px 0px rgba(50, 50, 50, 0.62);
+          box-shadow: 2px 3px 15px 0px rgba(50, 50, 50, 0.62);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 49px;
+  height: 49px;
+  line-height: 37px;
+  font-size: 15px;
+  border: 1px solid #c7d0d4;
+  background: #fff;
+  margin: 2px;
+  padding: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.one_button.animate {
+  -webkit-transition: all 0.3s linear;
+  transition: all 0.3s linear;
+  background-color: #fff;
+  -webkit-box-shadow: 0px 1px 15px 0px rgba(50, 50, 50, 0.62) inset;
+          box-shadow: 0px 1px 15px 0px rgba(50, 50, 50, 0.62) inset;
+}
+
+.one_button[data-keycode^="Arrow"] {
+  background-color: #e3e3e3;
+}
+
+.one_button[data-keycode="lang"] {
+  background-color: #e3e3e3;
+}
+
+.one_button[data-keycode="lang"]:hover {
+  background-color: #e3e3e3;
+}
+
+.one_button:hover {
+  background-color: #c5c5c5;
+}
+
+.one_button.backspace {
+  width: 75px;
+  background-color: #e3e3e3;
+}
+
+.one_button.backspace:hover {
+  background-color: #c5c5c5;
+}
+
+.one_button.tab {
+  width: 75px;
+  background-color: #e3e3e3;
+}
+
+.one_button.tab:hover {
+  background-color: #c5c5c5;
+}
+
+.one_button.ctrl, .one_button.alt, .one_button.shift {
+  background-color: #e3e3e3;
+}
+
+.one_button.ctrl:hover, .one_button.alt:hover, .one_button.shift:hover {
+  background-color: #c5c5c5;
+}
+
+.one_button.ru, .one_button.en {
+  cursor: default;
+}
+
+.one_button.ru.active, .one_button.ru.animate, .one_button.en.active, .one_button.en.animate {
+  -webkit-box-shadow: 2px 3px 15px 0px rgba(50, 50, 50, 0.62);
+          box-shadow: 2px 3px 15px 0px rgba(50, 50, 50, 0.62);
+}
+
+.one_button.caps_lock {
+  width: 88px;
+  background-color: #e3e3e3;
+}
+
+.one_button.caps_lock:hover {
+  background-color: #c5c5c5;
+}
+
+.one_button.enter {
+  width: 87px;
+  background-color: #e3e3e3;
+}
+
+.one_button.enter:hover {
+  background-color: #c5c5c5;
+}
+
+.one_button.shift:nth-child(1) {
+  width: 126px;
+  background-color: #e3e3e3;
+}
+
+.one_button.shift:nth-child(1).active {
+  background-color: #fff;
+}
+
+.one_button.shift:nth-child(1):hover {
+  background-color: #c5c5c5;
+}
+
+.one_button.space {
+  width: 338px;
+}
+
+.one_button.space:hover {
+  background-color: #c5c5c5;
+}
+
+.one_button.active {
+  background-color: #fff;
+  -webkit-box-shadow: 0px 1px 15px 0px rgba(50, 50, 50, 0.62) inset;
+          box-shadow: 0px 1px 15px 0px rgba(50, 50, 50, 0.62) inset;
+}
+/*# sourceMappingURL=style.css.map */
