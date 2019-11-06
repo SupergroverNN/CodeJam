@@ -104,12 +104,21 @@ body {
   background-color: #c5c5c5;
 }
 
-.one_button.ctrl, .one_button.alt, .one_button.lang, .one_button.shift {
+.one_button.ctrl, .one_button.alt, .one_button.shift {
   background-color: #e3e3e3;
 }
 
-.one_button.ctrl:hover, .one_button.alt:hover, .one_button.lang:hover, .one_button.shift:hover {
+.one_button.ctrl:hover, .one_button.alt:hover, .one_button.shift:hover {
   background-color: #c5c5c5;
+}
+
+.one_button.ru, .one_button.en {
+  cursor: default;
+}
+
+.one_button.ru.active, .one_button.ru.animate, .one_button.en.active, .one_button.en.animate {
+  -webkit-box-shadow: 2px 3px 15px 0px rgba(50, 50, 50, 0.62);
+          box-shadow: 2px 3px 15px 0px rgba(50, 50, 50, 0.62);
 }
 
 .one_button.caps_lock {
