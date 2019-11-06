@@ -330,7 +330,6 @@ const dataEnUpper = [
 ];
 let data = dataRuLower;
 
-
 function renderTextErea() {
   const textarea = document.createElement('textarea');
   textarea.className = 'inputarea';
@@ -348,7 +347,6 @@ function handleMouseUp(code) {
   state.isShift = isShift;
   renderKeyboard();
 }
-
 
 function renderKeyboard() {
   const { isShift, isCaps } = state;
@@ -391,7 +389,10 @@ function renderKeyboard() {
 
 function handleDown(event) {
   pressed.add(event.code);
-  if (!event.repeat && event.code === 'CapsLock') {
+  if (event.repeat) {
+    return;
+  }
+  if (event.code === 'CapsLock') {
     state.isCaps = !state.isCaps;
     if (!state.isCaps) {
       pressed.delete(event.code);
